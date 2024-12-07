@@ -3,6 +3,7 @@
 The notebook testing\_and\_comparison.ipynb contains all necessary cells to install required packages and execute test and some highlights of the methods
 
 Key Functions:
+
 	-	eigenvalue\_power\_method
 
 	-	eigenvalues\_QR\_algorithm
