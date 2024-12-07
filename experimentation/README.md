@@ -4,11 +4,11 @@ The notebook testing\_and\_comparison.ipynb contains all necessary cells to inst
 
 Key Functions:
 
-	-	eigenvalue\_power\_method
+	-	eigenvalue_power_method
 
-	-	eigenvalues\_QR\_algorithm
+	-	eigenvalues_QR_algorithm
 
-	-	eigenvalues\_characteristic\_polynomial\_method
+	-	eigenvalues_characteristic_polynomial_method
 
 Execution Instructions
 	-	Run all cells sequentially to ensure proper installation and execution.
