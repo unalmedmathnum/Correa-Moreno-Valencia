@@ -307,7 +307,7 @@ def eigenvector(A: list[list[float]], eigenvalue: float, show=False):
     return v_norm
 
 
-def eigenvalue_power_method(A, x, mx=1000, tol=1e-9):
+def eigenvalue_power_method(A, x, mx=1000, tol=1e-8):
     """
     Computes the dominant eigenvalue and its corresponding eigenvector
     of a square matrix `A` using the Power Method.
@@ -329,20 +329,26 @@ def eigenvalue_power_method(A, x, mx=1000, tol=1e-9):
             - `eigenvalue` (float): The dominant eigenvalue of the matrix `A`.
             - `eigenvector` (numpy.ndarray): The corresponding normalized eigenvector.
     """
-
-    x = x / np.linalg.norm(x)  # Normalize
-    for i in range(mx):
+  
+    i = 0
+    x0 = x / np.linalg.norm(x) # Normalize
+    x = x0 
+    
+    while i < mx:
+        i += 1
         Ax = np.dot(A, x)  # Compute Ax
-        x_next = Ax / np.linalg.norm(Ax)  # Normalize
-        eigenvalue = np.dot(x_next.T, np.dot(A, x_next))  # Use Rayleigh
-        if np.linalg.norm(x_next - x) < tol:  # Check the tolerance
-            return eigenvalue, x_next, i  # Return when converged
-        x = x_next  # Update the vector for the next iteration
+        x = Ax / np.linalg.norm(Ax)  # Normalize
 
-    return eigenvalue, x_next, mx  # Return after max iterations if not converged
+        if np.linalg.norm(x - x0) < tol:  # Check the tolerance
+            break
+
+        x0 = x  # Update the vector for the next iteration
+
+    eigenvalue = np.dot(x.T, np.dot(A, x))  # Use Rayleigh
+    return eigenvalue, x, i  # Return after max iterations if not converged
 
 
-def eigenvalues_QR_algorithm(A : list[list[float]], mx=1000, tol=1e-6):
+def eigenvalues_QR_algorithm(A : list[list[float]], mx=1000, tol=1e-8):
     """
     Computes the eigenvalues of a square matrix `A` using the QR algorithm.
 
@@ -360,7 +366,9 @@ def eigenvalues_QR_algorithm(A : list[list[float]], mx=1000, tol=1e-6):
 
     """
     A0 = A
-    for i in range(mx):
+    i = 0
+    while i < mx:
+        i += 1
         Q, R = np.linalg.qr(A) # Q es ortonormal y R es triangular superior
         A = np.dot(R, Q)
 
