@@ -1,0 +1,8 @@
+El documento está bien escrito. Sobre los códigos tengo dos comentarios principales: 
+1. Hemos hablado sobre la eliminación gaussiana como método analítico pero poco eficiente de solución de ecuaciones 
+lineales. Tampoco entiendo la necesidad de programar el determinante y algunas cosas que están eficientemente programadas 
+en las librerías que usaron. 
+2. Opuesto a lo anterior, en la descomposición qr, usar el código de qr y además en un loop no era la implemetación que esperaba. 
+Aunque solo 2 de ustedes hicieron commits, me parece bien el trabajo colaborativo. 
+
+  Nota: 4.2
